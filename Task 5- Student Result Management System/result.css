@@ -1,0 +1,36 @@
+
+.result-box{
+    display: flex;
+    justify-content: center;
+
+}
+.result-heading{
+    padding-top:1px;
+    text-align: center;
+    background-color:#059862;
+    color:#fff;
+}
+p{
+    margin-top:20px;
+    margin-left: 100px;
+}
+h1{
+    text-align:center;
+}
+.result-padding{
+    margin-left:30px;
+}
+.result-boxx{
+    margin-right:0px;
+    margin-left:0px;
+    margin:10px;
+    height:500px;
+    width:350px;
+    margin-top:-50px;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    background-color:#FFFFFF;
+    border-radius:10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
