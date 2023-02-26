@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = 'stylesheet' href = 'style.css'> 
+    <title>Student Registration Form</title>
+    <style>
+        form{
+  width: 40%;
+}
+
+.form-container {
+  display: flex;
+  background-image: url('bg.jpeg');
+}
+.container {
+  box-sizing: border-box;
+  padding: 12px;
+  width: 100%;
+}
+h2{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 28px;
+  color: rgb(194, 67, 194);
+  margin-left: 10px;
+}
+#registeration {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+form label {
+  display: block;
+  color: rgb(194, 67, 194);
+}  
+form input[type=text],
+form input[type=tel],
+form input[type=url],
+form input[type = email],
+form input[type = password] {
+  width: 100%;
+  border: none;
+  padding: 12px;
+  margin: 5px 0 22px 0;
+  background: #f1f1f1;
+}
+form input:focus {
+  outline: none;
+  background: #ddd;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.radio-label {
+  display: inline-block;
+  margin-right: 10px;
+} 
+form input[type=radio] {
+  display: inline-block;
+  margin-right: 5px;
+  margin-top: 10px;
+}  
+button {
+  background-color: purple;
+  color: white;
+  opacity: 0.9;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  padding: 12px 18px;
+  margin: 8px 0px;
+}  
+button:hover {
+  opacity: 1;
+}  
+.student-data {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid black;
+  background-image: url('bg3.jpeg');
+  text-align:justify;
+  font-family: sans-serif;
+  color: white;
+  font-size: 14px;
+  margin: 7px;
+  padding: 8px;
+  font-family: monospace;
+}
+.student-data p {
+  padding: 5px;
+}
+#student-info {
+  width: 40%;
+  margin-left: 100px;
+  padding: 20px;
+  border: 1px solid #f1f1f1;   
+  border-radius: 3px;
+  background-color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.student-data img {
+  width: 45%;
+  display: block;
+  float: left;
+  height: auto;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  background-size: cover;
+}
+.student-data p{
+   margin: 0 0 10px 0;
+}
+    </style>
+</head>
+<body>
+    <div class = 'form-container'>
+    <form id ='registration' onsubmit="return displayInput()">
+        <h2>Student Registration form</h2>
+    <div class = 'container'>
+            <label for = 'name'><b>Student's Name:</b></label>
+            <input type = 'text' id = 'name' placeholder = 'Enter your name' required> 
+            <label for = 'mail'><b>Email Address:</b></label>
+            <input type = 'email' id = 'mail' placeholder = 'Enter your Mail ID' required>
+            <label for = 'password'><b>Password:</b></label>
+            <input type = 'password' id = 'password' required>
+            <label for = 'phone'><b>Contact Number:</b></label>
+            <input type = 'tel' id = 'phone' placeholder="Enter your phone number" required>
+            <label for = 'image'><b>Image Link:</b></label>
+            <input type = 'url' id = 'image'>
+            <label for = 'gender'><b>Gender:</b></label>
+            <label class = 'radio-label' for = 'male'>Male</label>
+            <input class = 'radio' type = 'radio' id = 'male' name = 'gender'>
+            <label class = 'radio-label' for = 'female'>Female</label>
+            <input class = 'radio' type = 'radio' id = 'female' name = 'gender'><br><br>
+            <button type = 'submit'>Sign Up</button>
+    </div>
+        </form>
+        <div id = 'student-info'>
+            
+        </div>
+        </div>
+        <script>
+            function displayInput() {
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const imageLink = document.getElementById('image').value;
+    const email = document.getElementById('mail').value;
+    const password = document.getElementById('password').value;
+    const gender = document.querySelector('input[name="gender"]:checked').value;
+
+    const studentData = document.createElement('div');
+    studentData.classList.add('student-data');
+
+    const imageElement = document.createElement('img');
+    imageElement.src = imageLink;
+    studentData.appendChild(imageElement);
+
+    const nameElement = document.createElement('p');
+    nameElement.innerHTML = '<b>Name:</b> ' + name;
+    studentData.appendChild(nameElement);
+    
+    const phoneElement = document.createElement('p');
+    phoneElement.innerHTML = '<b>Contact Number:</b> ' + phone;
+    studentData.appendChild(phoneElement);
+    
+    const emailAddress = document.createElement('p');
+    emailAddress.innerHTML = '<b>Email ID</b>:' + email;
+    studentData.appendChild(emailAddress);
+ 
+    const genderElement = document.createElement('p');
+    genderElement.innerHTML = '<b>Gender:<b> ' + (male.checked ? 'Male' : 'Female');
+    studentData.appendChild(genderElement);
+    
+    const studentInfo = document.getElementById('student-info');
+    studentInfo.appendChild(studentData);
+
+    document.getElementById('name').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('image').value = '';
+    document.getElementById('mail').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('male').checked = false;
+    document.getElementById('female').checked = false;
+
+    return false;
+}
+
+        </script>
+</body>
+</html>

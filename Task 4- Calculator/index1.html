@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Calculator</title>
+    <style>
+   
+        *{
+    margin: 0;
+    padding: 0;
+    /* Padding and border are included in the element's total width and height */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    font:bold 14px Aria,sans-serif;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  font-size: 6.2rem;
+  text-align: center;
+  animation: pulsate 1.5s infinite alternate;  
+  border: 0.2rem solid #fff;
+  border-radius: 7rem;
+  padding: 0.3em;
+  box-shadow: 0 0 .8rem #fff,
+            0 0 .2rem #fff,
+            0 0 2rem #bc13fe,
+            0 0 0.8rem #bc13fe,
+            0 0 2.8rem #bc13fe,
+            inset 0 0 1.3rem #bc13fe; 
+}
+
+
+.neonText {
+    color: #fff;
+    text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #f09,
+      0 0 82px #f09,
+      0 0 92px #f09,
+      0 0 102px #f09,
+      0 0 151px #f09;
+  }
+
+html {
+    height: 100%;
+    background-image: url(Calc1.jpg);
+    background-size: auto;
+}
+
+#calculator {
+    width: 325px;
+    height: auto;
+
+    margin: 100px auto;
+    padding: 20px 20px 9PX;
+
+    background: #0b8fcc;
+    background: linear-gradient(#0757ce, #8bceec);
+    border-radius: 3px;
+    /* Using box shadows to create 3D effects */
+    box-shadow: 0px 4px #009de4, 0px 10px 15px rgba(0,0,0,0.2);
+}
+
+#screen {
+    float: right;
+
+    height: 40px;
+    width: 212px;
+
+    padding: 0 10px;
+
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    /* Inset shadow on the screen to create indent */
+    box-shadow: inset 0px 4px rgba(0, 0, 0, 0.2);
+
+    /* Typography */
+    font-size: 17px;
+    line-height: 40px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    text-align: right;
+    letter-spacing: 1px;
+}
+
+/* Clear Floats to make sure #calculator includes them correctly */
+.keys, .top {
+    overflow: hidden;
+}
+
+/* Applying css on all the keys */
+.keys span, #clear {
+    float: left;
+    position: relative;
+    top: 0;
+    /* Specifies the type of cursor to be displayed when pointing on an element. */
+    cursor: pointer;
+
+    width: 66px;
+    height: 36px;
+
+    background: white;
+    border-radius: 3px;
+    box-shadow: 0px 4px rgba(0, 0, 0, 0.2);
+
+    margin: 0 7px 11px 0;
+
+    color: #888;
+    line-height: 36px;
+    text-align: center;
+
+    /* prevent selection of text inside keys */
+    user-select: none;
+
+    /* Transitions allows you to change property values smoothly  */
+    transition: all 0.2s ease;
+}
+
+.keys span.operator {
+    background: #FFF0F5;
+    margin-right: 0; /* 7px in previous setting*/
+}
+
+/* Eval Button */
+.keys span.eval {
+    background: #f1ff92;
+    box-shadow: 0px 4px #9da853;
+    color: #888e5f;
+}
+
+.keys span.eval:hover {
+    background: #abb850;
+    box-shadow: 0px 4px #717a33;
+    color: #ffffff;
+}
+
+.keys span.eval:active {
+    box-shadow: 0px 0px #717a33;
+    top: 4px;
+}
+
+/* Clear Button */
+#clear {
+    background: #ff9fa8;
+    box-shadow: 0px 4px #ff7c87;
+    color: white;
+}
+
+#clear:hover {
+    background: #f68991;
+    box-shadow: 0px 4px #d3545d;
+    color: white;
+}
+
+#clear:active {
+    top: 4px;
+    box-shadow: 0px 0px #d3545d;
+}
+
+/* Other Buttons */
+.keys span:hover {
+    background: #9c89f6;
+    box-shadow: 0px 4px #6b54d3;
+    color: white;
+}
+
+.keys span:active {
+    box-shadow: 0px 0px #6b54d3;
+    top: 4px;
+}
+    </style>
+</head>
+<body onload="load()">
+    <h1 class="neonText">CALCULATOR</h1>
+    <div id="calculator">
+        <!-- Screen and clear key -->
+        <div class="top">
+            <span id="clear">C</span>
+            <div id="screen"></div>
+        </div>
+
+        <div class="keys">
+            <!-- operators and other keys -->
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+            <span class="operator">+</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span class="operator">-</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span class="operator">÷</span>
+            <span>0</span>
+            <span>.</span>
+            <span class="eval">=</span>
+            <span class="operator">x</span>
+        </div>
+    </div>
+    <script>
+        function load() {
+  var btns = document.querySelectorAll("#calculator span");
+  var operators = ["+", "-", "x", "÷"];
+  var inputScreen = document.querySelector("#screen");
+  var btnValue;
+  var input;
+
+  for (var i = 0; i < btns.length; i++) {
+    var decimalAdded = false; // Flag used to avoid two decimal
+
+    btns[i].addEventListener("click", function() {
+      btnValue = this.innerHTML;
+      input = inputScreen.innerHTML;
+
+      switch (btnValue) {
+        case "C":
+          inputScreen.innerHTML = "";
+          decimalAdded = false;
+          break;
+        case "=":
+          // Last char of string
+          var lastChar = input[input.length - 1];
+
+          // Replace x to *, + to / which could be calculated in eval
+          input = input.replace(/x/g, "*").replace(/÷/g, "/");
+
+          // Checking the last character of the input.
+          // If it's an operator or a decimal, remove it
+          // /.$/ means last char in regex
+          if (operators.indexOf(lastChar) > -1 || lastChar == ".")
+            input = input.replace(/.$/, "");
+
+          if (input) {
+            // If the argument is an expression, eval() evaluates the expression.
+            // If the argument is one or more JavaScript statements, eval() executes the statements.
+            inputScreen.innerHTML = eval(input);
+          }
+          decimalAdded = false;
+          break;
+        case ".":
+          if (!decimalAdded) {
+            inputScreen.innerHTML += btnValue;
+            decimalAdded = true;
+          }
+          break;
+        case "+":
+        case "-":
+        case "x":
+        case "÷":
+          // Last char of string
+          var lastChar = input[input.length - 1];
+
+          // Only add operator if input is not empty and there is no operator at the last
+          if (input != "" && operators.indexOf(lastChar) == -1)
+            inputScreen.innerHTML += btnValue;
+          // Allows minus if the string is empty. The first number could be under zero
+          else if (input == "" && btnValue == "-")
+            inputScreen.innerHTML += btnValue;
+
+          // Allows to represent the last operation
+          if (operators.indexOf(lastChar) > -1 && input.length > 1) {
+            inputScreen.innerHTML = input.replace(/.$/, btnValue);
+          }
+          decimalAdded = false;
+          break;
+        default:
+          inputScreen.innerHTML += btnValue;
+          decimalAdded = false;
+          break;
+      }
+    });
+  }
+}
+    </script>
+</body>
+</html>

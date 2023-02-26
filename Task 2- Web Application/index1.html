@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+               body {
+    display: block;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-image: url("https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-040.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    position: relative;
+    height: 600px;
+    left: 0px;
+}
+
+.heder {
+    height: 140px;
+    width: 100%;
+    background-image: url("https://letsgrowmore.in/wp-content/uploads/2021/05/cropped-growmore-removebg-preview.png");
+    background-size: 300px;
+    background-repeat: no-repeat;
+    border-bottom: 2px solid #e7b129;
+    padding-top: 50px;
+    font-size: 100px;
+    color: rgb(180, 193, 97);
+}
+
+.btn {
+    position: absolute;
+    top: 45px;
+    right: 20px;
+}
+
+button {
+    color: black;
+    height: 35px;
+    width: 100px;
+    background-image: linear-gradient(rgb(216, 90, 18), white);
+    border-radius: 10px;
+}
+
+#data {
+    width: 99%;
+    height: 450px;
+    text-align: right;
+    justify-content: center;
+    display: flex;
+}
+
+.table {
+    width: 800px;
+}
+
+table {
+    color: rgb(235, 150, 157);
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font: 700;
+}
+
+table tr :hover {
+    background-color: lightgray;
+}
+
+img {
+    clip-path: circle();
+}
+
+.welcome {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(81, 68, 87);
+    padding-top: 120px;
+}
+    </style>
+</head>
+<title>WEB APPLICATION</title>
+
+<body>
+    <div class="container">
+        <div class="heder">
+            <div align="center">LGM USERS</div>
+            <div align="right" class="btn"><button id="getdata" align="center" onclick="getData()">GET USER</button></div>
+        </div>
+        <div id="data">
+            <div class="table">
+                <table width="100%" height="490px">
+                    <tr align="center">
+                        <td><img src="" id="p1img"></td>
+                        <td><img src="" id="p2img"></td>
+                        <td><img src="" id="p3img"></td>
+                    </tr>
+                    <tr>
+
+                        <td align="center" id="name1"></td>
+                        <td align="center" id="name2"></td>
+                        <td align="center" id="name3"></td>
+                    </tr>
+                    <tr>
+
+                        <td align="center" id="mail1"></td>
+                        <td align="center" id="mail2"></td>
+                        <td align="center" id="mail3"></td>
+                    </tr>
+                    <tr align="center">
+                        <td><img src="" id="p4img"></td>
+                        <td><img src="" id="p5img"></td>
+                        <td><img src="" id="p6img"></td>
+                    </tr>
+                    <tr>
+
+                        <td align="center" id="name4"></td>
+                        <td align="center" id="name5"></td>
+                        <td align="center" id="name6"></td>
+                    </tr>
+                    <tr>
+
+                        <td align="center" id="mail4"></td>
+                        <td align="center" id="mail5"></td>
+                        <td align="center" id="mail6"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-style: italic;" class="welcome">
+        <marquee width="100%" direction="right" height="100px">
+            Designed by Shaikh Tabrez</marquee>
+    </div>
+    <script>
+      function getData(a) {
+    url = "https://reqres.in/api/users?page=1";
+    fetch(url).then((response) => {
+        return response.json();
+    }).then((data) => {
+        console.log(data);
+        var value = data;
+        var img1 = (value['data'][0]['avatar']);
+        document.getElementById('p1img').src = img1;
+        var img2 = (value['data'][1]['avatar']);
+        document.getElementById('p2img').src = img2;
+        var img3 = (value['data'][2]['avatar']);
+        document.getElementById('p3img').src = img3;
+        var img3 = (value['data'][3]['avatar']);
+        document.getElementById('p4img').src = img3;
+        var img3 = (value['data'][4]['avatar']);
+        document.getElementById('p5img').src = img3;
+        var img3 = (value['data'][5]['avatar']);
+        document.getElementById('p6img').src = img3;
+        ///// name
+        var first1 = (value['data'][0]['first_name']);
+        var last1 = (value['data'][0]['last_name']);
+        document.getElementById('name1').innerHTML = first1 + " " + last1;
+        var first1 = (value['data'][1]['first_name']);
+        var last1 = (value['data'][1]['last_name']);
+        document.getElementById('name2').innerHTML = first1 + " " + last1;
+        var first1 = (value['data'][2]['first_name']);
+        var last1 = (value['data'][2]['last_name']);
+        document.getElementById('name3').innerHTML = first1 + " " + last1;
+        var first1 = (value['data'][3]['first_name']);
+        var last1 = (value['data'][3]['last_name']);
+        document.getElementById('name4').innerHTML = first1 + " " + last1;
+        var first1 = (value['data'][4]['first_name']);
+        var last1 = (value['data'][4]['last_name']);
+        document.getElementById('name5').innerHTML = first1 + " " + last1;
+        var first1 = (value['data'][5]['first_name']);
+        var last1 = (value['data'][5]['last_name']);
+        document.getElementById('name6').innerHTML = first1 + " " + last1;
+        /////mail
+        var mail1 = (value['data'][0]['email']);
+        document.getElementById('mail1').innerHTML = mail1;
+        var mail2 = (value['data'][1]['email']);
+        document.getElementById('mail2').innerHTML = mail2;
+        var mail3 = (value['data'][2]['email']);
+        document.getElementById('mail3').innerHTML = mail3;
+        var mail3 = (value['data'][3]['email']);
+        document.getElementById('mail4').innerHTML = mail3;
+        var mail3 = (value['data'][4]['email']);
+        document.getElementById('mail5').innerHTML = mail3;
+        var mail3 = (value['data'][5]['email']);
+        document.getElementById('mail6').innerHTML = mail3;
+
+
+
+
+    })
+}
+    </script>
+    
+</body>
+
+</html>

@@ -1,0 +1,377 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+   <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Baloo Bhai 2', cursive;
+    background-color: bisque;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.container nav {
+    position: absolute;
+    top: 0;
+    background-color: cyan;
+    color: white;
+    font-size: 35px;
+    text-align: center;
+    padding: 8px 0;
+    width: 100%;
+    font-weight: bold;
+}
+
+.input-form {
+    width: 40%;
+    height: auto;
+    text-align: center;
+}
+
+.input-form form {
+    width: 100%;
+    border: 1px solid white;
+    border-radius: 20px;
+    margin: 10px 20px;
+    padding: 20px;
+    text-align: start;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: 500;
+}
+
+form .input-group {
+    margin: 26px 0;
+    position: relative;
+    width: 100%;
+}
+
+.input-group label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    transition: 0.6s;
+}
+
+.input-group .input-field {
+    width: 100%;
+    padding: 10px 15px;
+    background: white;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+}
+
+input:focus~label,
+input:valid~label,
+textarea:focus~label,
+textarea:valid~label {
+    top: -10px;
+    font-size: 10px;
+}
+
+.buttons {
+    text-align: center;
+}
+
+form button {
+    display: inline-block;
+    margin: 0 auto;
+    background: rgb(234, 208, 9);
+    font-size: 16px;
+    padding: 10px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.6s;
+}
+
+form button:hover {
+    background: linear-gradient(rgba(11, 61, 210, 0.75), rgba(10, 127, 230, 0.75));
+    color: white;
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+    margin: 10px;
+    accent-color: rgb(3, 56, 100);
+}
+
+input[type='file'] {
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.input-select {
+    margin: 20px 0;
+    font-size: 16px;
+}
+
+.input-select .Label {
+    font-size: 17px;
+    margin-left: 10px;
+}
+
+.line {
+    width: 1.5px;
+    height: 50%;
+    background: rgb(49, 242, 6);
+}
+
+.table {
+    width: 50%;
+    height: auto;
+    text-align: center;
+    padding: 10px 20px;
+    overflow: auto;
+}
+
+.scroll {
+    overflow-y: auto;
+}
+
+.scroll::-webkit-scrollbar {
+    width: 100%;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    background: transparent;
+    border: 1px solid rgb(147, 145, 145);
+    border-radius: 8px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 10px auto;
+}
+
+th,
+td {
+    padding: 10px 20px;
+    border-bottom: 1.6px solid rgb(220, 22, 22);
+}
+
+th {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+td {
+    font-size: 16px;
+}
+
+tr:hover {
+    background: white;
+}
+
+p {
+    font-size: 18px;
+    letter-spacing: 1.2px;
+    line-height: 1.6rem;
+}
+
+img {
+    width: 150px;
+}
+
+@media only screen and (max-width:900px) {
+    .container {
+        display: block;
+        padding: 20px 0;
+        background: transparent;
+        align-items: center;
+    }
+
+    .input-form,
+    .table {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .input-form form {
+        padding: 10px;
+        margin: 0;
+    }
+
+    .input-group .input-field {
+        font-size: 14px;
+        background: transparent;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid rgb(204, 203, 203);
+        border-radius: 0;
+    }
+
+    .line {
+        margin: 30px auto;
+        height: 2px;
+        width: 90%;
+        background: rgb(202, 0, 0);
+    }
+
+    input:focus~label,
+    input:valid~label,
+    textarea:focus~label,
+    textarea:valid~label {
+        top: -6px;
+    }
+}
+   </style>
+</head>
+<style>
+body{
+    background-image: url("IMG.png");
+}
+</style>
+
+<body>
+    <div class="container">
+        <nav>Student Registration Form</nav>
+        <div class="input-form">
+            <h1>Register Here</h1>
+            <form action="#" id="input-form">
+                <div class="input-group">
+                    <input type="text" class="input-field" id="name" required autofocus>
+                    <label for="name">Name</label>
+                </div>
+                <div class="input-group">
+                    <input type="email" class="input-field" id="email" required>
+                    <label for="email">Email</label>
+                </div>
+                <div class="input-group">
+                    <input type="number" class="input-field" id="age" required>
+                    <label for="age">Age</label>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="input-field" id="addr" required>
+                    <label for="addr">Address</label>
+                </div>
+                <div class="input-select">
+                    <label for="gender" class="Label">Gender</label><br>
+                    <input type="radio" id="male" value="Male" name="gender">Male
+                    <input type="radio" id="female" value="Female" name="gender">Female
+                </div>
+                <div class="input-select">
+                    <label for="skills" class="Label">Skills</label><br>
+                    <input type="checkbox" name="skills" id="communication" value="Communication">Communication
+                    <input type="checkbox" name="skills" id="leadership" value="Leadership">Leadership
+                    <input type="checkbox" name="skills" id="programming" value="Programming">Programming
+                    <input type="checkbox" name="skills" id="finance" value="Finance">Finance
+                    <input type="checkbox" name="skills" id="consultancy" value="Consultancy">Consultancy
+                    <input type="checkbox" name="skills" id="marketing" value="Marketing">Marketing
+                </div>
+                <div class="buttons">
+                    <button type="button" id="add-btn">REGISTER</button>
+                    <button type="button" id="delete-btn">DELETE</button>
+                </div>
+            </form>
+        </div>
+        <div class="line"></div>
+        <div class="table">
+            <h1>Registered Students</h1>
+            <div class="scroll">
+                <table id="display">
+                    <tr>
+                        <th>Description</th>
+                        <th>Profile</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        var add = document.getElementById('add-btn')
+var t = document.getElementById('display')
+
+var row = 1
+add.onclick = function () {
+
+    const name = document.getElementById('name').value
+    const email = document.getElementById('email').value
+    const age = document.getElementById('age').value
+    const addr = document.getElementById('addr').value
+    const img = document.createElement('img')
+
+    if (name != '' && email != '' && age != '' && addr != '') {
+        var values = []
+        var selected_value = document.querySelectorAll('input[type="checkbox"]:checked')
+        Array.from(selected_value).forEach(function (e) {
+            values.push(e.value)
+        })
+
+        const description = `<p><strong>Name:</strong>
+         ${name}<br>
+         <strong>Email:</strong>
+          ${email}<br>
+          <strong>Age:</strong> 
+          ${age}<br>
+          <strong>Address: </strong> 
+          ${addr}<br>
+          <strong>Gender:</strong>
+           ${document.querySelector('input[type="radio"]:checked').value}
+        <br>
+        <strong>Skills:</strong> 
+        ${values.join(', ')}
+        </p> `
+        var newRow = t.insertRow(row)
+
+        var cell1 = newRow.insertCell(0)
+        var cell2 = newRow.insertCell(1)
+
+        if (document.querySelector('input[type="radio"]:checked').value == 'Male') {
+            img.setAttribute('src', 'SigmaMale.jpg')
+            img.setAttribute('alt', 'Male')
+        }
+        else {
+            img.setAttribute('src', 'SigmaWomen.jpg')
+            img.setAttribute('alt', 'Female')
+        }
+
+        cell1.innerHTML = description
+        cell2.appendChild(img)
+
+        row++
+        document.getElementById('input-form').reset()
+        name = email = age = ''
+    }
+    else {
+        alert('Please fill all the fields')
+    }
+}
+
+document.getElementById('delete-btn').onclick = function () {
+    if (row != 1) {
+        console.log(row)
+        row--
+        t.deleteRow(row)
+    }
+    else
+        return
+}
+    </script>
+</body>
+
+</html>
