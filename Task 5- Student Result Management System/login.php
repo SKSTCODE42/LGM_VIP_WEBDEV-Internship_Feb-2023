@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>Student login</h1>
-<div class="container">
+    <div class="container">
     <div class="contain" height="100" width="400">
     <form method="post" action="result.php">
         <p>Enter your regno:</p>
